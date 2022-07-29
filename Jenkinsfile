@@ -6,6 +6,7 @@ pipeline {
 	}
 	environment {
 		DOCKER_IMAGE = "arunakilan/demo:v${BUILD_NUMBER}"
+	}
 	stages {
 		stage('git checkout') {
 			steps {
