@@ -15,13 +15,13 @@ pipeline {
 		}
 		stage('build docker image') {
 			steps {
-				bat "docker build -t ${env.DOCKER_IMAGE} ."
+				sh "docker build -t ${env.DOCKER_IMAGE} ."
 			}
 		}
 		stage('push to dockerhub') {
 			steps {
-				bat "docker login -u ${params.U_NAME} -p ${params.PWD}"
-				bat "docker push ${env.DOCKER_IMAGE}"
+				sh "docker login -u ${params.U_NAME} -p ${params.PWD}"
+				sh "docker push ${env.DOCKER_IMAGE}"
 			}
 		}
 	}
