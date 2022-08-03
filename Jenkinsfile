@@ -5,7 +5,7 @@ pipeline {
 		password(name:'PWD', defaultValue:'', description:'enter the password')
 	}
 	environment {
-		DOCKER_IMAGE = "arunakilan/py-pro:v${BUILD_NUMBER}"
+		DOCKER_IMAGE = "santhoshsp/py-pro:v${BUILD_NUMBER}"
 	}
 	stages {
 		stage('git checkout') {
