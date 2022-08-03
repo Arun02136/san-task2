@@ -5,7 +5,7 @@ pipeline {
 		password(name:'PWD', defaultValue:'', description:'enter the password')
 	}
 	environment {
-		DOCKER_IMAGE = "arunakilan/py-pro:v${BUILD_NUMBER}"
+		DOCKER_IMAGE = "santhoshsp/py-pro:v${BUILD_NUMBER}"
 	}
 	stages {
 		stage('git checkout') {
@@ -15,13 +15,13 @@ pipeline {
 		}
 		stage('build docker image') {
 			steps {
-				sh "docker build -t ${env.DOCKER_IMAGE} ."
+				bat "docker build -t ${env.DOCKER_IMAGE} ."
 			}
 		}
 		stage('push to dockerhub') {
 			steps {
-				sh "docker login -u ${params.U_NAME} -p ${params.PWD}"
-				sh "docker push ${env.DOCKER_IMAGE}"
+				bat "docker login -u ${params.U_NAME} -p ${params.PWD}"
+				bat "docker push ${env.DOCKER_IMAGE}"
 			}
 		}
 	}
